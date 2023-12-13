@@ -1,10 +1,10 @@
-import MovieList from "./components/MovieList";
-
+import MoviList from "./components/MovieList";
+import Navbar from "./components/Navbar";
 function App() {
   return (
     <>
-      <h1>MovieApp</h1>
-      <MovieList />
+      <Navbar />
+      <MoviList />
     </>
   );
 }
