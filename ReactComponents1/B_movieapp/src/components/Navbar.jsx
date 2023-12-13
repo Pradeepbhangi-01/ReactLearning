@@ -1,29 +1,64 @@
-import { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Nav = styled.div`
-  width: 100%;
   height: 70px;
-  color: #f1f1f1;
-  background-color: rgb(5, 81, 56);
+  background: linear-gradient(170deg, #1bc059, #0d47a1);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
 `;
 
-class Navbar extends Component {
+const Title = styled.div`
+  font-size: 30px;
+  color: #fff;
+  font-weight: 600;
+  font-family: "Times New Roman", Times, se rif;
+  text-transform: uppercase;
+  margin-left: 20px;
+  &:hover {
+    color: #f00;
+  }
+`;
+
+const CartImg = styled.img`
+  height: 48px;
+  margin-right: 20px;
+`;
+
+const CartIconContainer = styled.div`
+  position: relative;
+  cursor: pointer;
+`;
+
+const CartCount = styled.div`
+  background: ${(props) => props.color};
+  border-radius: 50%;
+  padding: 4px 8px;
+  position: absolute;
+  right: 10px;
+  top: -5px;
+  font-size: 12px;
+  visibility: ${(props) => (props.show ? "visible" : "hidden")};
+`;
+
+class Navbar extends React.Component {
   render() {
     return (
       <>
         <Nav>
-          <div style={styles.title}>ppHub</div>
-          <div style={styles.cartContainer}>
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/3144/3144456.png"
-              alt="Cart Icon"
-              style={styles.cartIcon}
+          <Title>MOVIE APP</Title>
+
+          <CartIconContainer>
+            <CartImg
+              alt="Cart-Icon"
+              src="https://cdn-icons-png.flaticon.com/128/891/891462.png"
             />
-            <span style={styles.cartCount}>3</span>
-          </div>
+            <CartCount color="yellow" show={true}>
+              5
+            </CartCount>
+          </CartIconContainer>
         </Nav>
       </>
     );
@@ -31,38 +66,3 @@ class Navbar extends Component {
 }
 
 export default Navbar;
-
-const styles = {
-  nav: {
-    width: "100%",
-    height: 70,
-    background: "blue",
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  title: {
-    fontSize: 30,
-    color: "#fff",
-    fontWeight: 600,
-    textTransform: "uppercase",
-    marginLeft: 20,
-    fontFamily: "'Montserrat', sans-serif",
-  },
-  cartContainer: {
-    position: "relative",
-    cursor: "pointer",
-  },
-  cartIcon: {
-    height: 48,
-    marginRight: 20,
-  },
-  cartCount: {
-    background: "orange",
-    borderRadius: "50%",
-    padding: "4px 8px",
-    position: "absolute",
-    right: 10,
-    top: -5,
-    fontSize: 12,
-  },
-};
