@@ -1,18 +1,12 @@
 import { ADD_TODO, TOGGLE_TODO } from "../actions/todoActions";
 
-// creating the initial state
 const initialState = {
   todos: [
-    {
-      text: "Meeting at 9",
-      completed: true,
-    },
-    {
-      text: "Lunch at 2",
-      completed: true,
-    },
+    { text: "Go to Gym at 6", completed: false },
+    { text: "Study at 8", completed: true },
   ],
 };
+
 export function todoReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
@@ -30,13 +24,12 @@ export function todoReducer(state = initialState, action) {
       return {
         ...state,
         todos: state.todos.map((todo, i) => {
-          if (i === action.index) {
+          if (i == action.index) {
             todo.completed = !todo.completed;
           }
           return todo;
         }),
       };
-
     default:
       return state;
   }
